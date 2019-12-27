@@ -40,7 +40,7 @@ void dfs2(int a, int b, int c)
 void solve()
 {
     for(int i=0; i<n; i++)
-        for(int j=-; j<n; j++)
+        for(int j=0; j<n; j++)
             if(A[i][j]==1)
             {
                 cnt++;
