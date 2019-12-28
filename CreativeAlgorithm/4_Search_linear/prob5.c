@@ -1,9 +1,18 @@
-// lower bound
+// upper bound
+// upper bound of a subset S (of some partially ordered set (K, ≤) )
+// is an element of K which is greater than or equal to every element of S.
+
 #include <stdio.h>
-/*
+
+/* n개로  이루어진  정수  집합에서  원하는  수  k보다  큰  수가  처음으로  등장하는  위치 를  찾으시오.
+
 8
 1 2 7 7 7 7 11 15
-7
+7 // 7
+
+5
+1 2 3 4 5
+7 // 6
 */
 
 int n, k, A[100];

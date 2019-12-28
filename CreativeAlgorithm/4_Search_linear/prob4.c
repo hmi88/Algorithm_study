@@ -1,14 +1,17 @@
 // lower bound
+// lower bound is defined dually as an element of K which is less than or equal to every element of S.
+
 #include <stdio.h>
 
-/*
+/* n개로  이루어진  정수  집합에서  원하는  수  k  이상인  수가  처음으로  등장하는  위치 를  찾으시오.
+
 8
 1 2 3 5 7 9 11 15
-6
+6 // 5
 
 5
 1 3 5 7 7
-7
+7 // 4
 */
 
 int n, k, A[100];
