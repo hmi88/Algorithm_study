@@ -37,6 +37,7 @@ void output()
 
 void bfs(int a, int b, int c)
 {
+    printf("%d %d %d\n", a, b, c);
     std::queue<VERTEX> Q;
     Q.push((VERTEX){a, b}), A[a][b]=c;
     while(!Q.empty())
