@@ -5,8 +5,8 @@ int chk[21][21][21];
 void solve2(void)
 {
     for(int a=1; a<=n; a++)
-        for(int b=a; b<=n; b++)
-            for(int c=b; c<=n; c++)
+        for(int b=a; b<=n; b++) // 항상 a보다 크게
+            for(int c=b; c<=n; c++) // 항상 a, b보다 크게
                 if(a+b+c == n && a+b>c)
                     ans++;
 }
