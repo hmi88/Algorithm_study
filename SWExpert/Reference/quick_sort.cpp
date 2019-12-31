@@ -1,80 +1,80 @@
-//
-// Created by Cho Kiheum on 2019/12/29.
-//
-
 #include <stdio.h>
-#define MAX_N 100
 
-int top;
-int stack[MAX_N];
+#define MAX_NUM 100
 
-void stackInit(void)
+int input[MAX_NUM];
+int num;
+
+void quickSort(int first, int last)
 {
-    top = 0;
-}
+    int pivot;
+    int i;
+    int j;
+    int temp;
 
-int stackIsEmpty(void)
-{
-    return (top == 0);
-}
-
-int stackIsFull(void)
-{
-    return (top == MAX_N);
-}
-
-int stackPush(int value)
-{
-    if (stackIsFull())
+    if (first < last)
     {
-        printf("stack overflow!");
-        return 0;
-    }
-    stack[top] = value;
-    top++;
+        pivot = first;
+        i = first;
+        j = last;
 
-    return 1;
-}
-
-int stackPop(int *value)
-{
-    if (top == 0)
-    {
-        printf("stack is empty!");
-        return 0;
-    }
-    top--;
-    *value = stack[top];
-    return 1;
-}
-
-int main(int argc, char* argv[])
-{
-    int T, N;
-    scanf("%d", &T);
-
-    for(int test_case = 1; test_case <=T; test_case++)
-    {
-        scanf("%d", &N);
-        stackInit();
-        for(int i=0; i<N; i++)
+        while (i < j)
         {
-            int value;
-            scanf("%d", &value);
-            stackPush(value);
-        }
-
-        printf("#%d ", test_case);
-
-        while (!stackIsEmpty())
-        {
-            int value;
-            if (stackPop(&value) == 1)
+            while (input[i] <= input[pivot] && i < last)
             {
-                printf("%d ", value);
+                i++;
+            }
+            while (input[j] > input[pivot])
+            {
+                j--;
+            }
+            if (i < j)
+            {
+                temp = input[i];
+                input[i] = input[j];
+                input[j] = temp;
             }
         }
-        printf("\n");
+
+        temp = input[pivot];
+        input[pivot] = input[j];
+        input[j] = temp;
+
+        quickSort(first, j - 1);
+        quickSort(j + 1, last);
     }
+}
+
+void printResult(void)
+{
+    int i;
+
+    for (i = 0; i < num; ++i)
+    {
+        printf("%d ", input[i]);
+    }
+    printf("\n");
+}
+
+int main(void)
+{
+    int T;
+    int test_case;
+    int i;
+
+    scanf("%d", &T);
+
+    for (test_case = 1; test_case <= T; test_case++)
+    {
+        scanf("%d", &num);
+        for (i = 0; i < num; i++)
+        {
+            scanf("%d", &input[i]);
+        }
+        quickSort(0, num - 1);
+        printf("#%d ", test_case);
+        printResult();
+    }
+
     return 0;
 }
