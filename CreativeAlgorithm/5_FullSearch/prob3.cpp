@@ -13,7 +13,6 @@ void solve2(void)
 
 void solve(int n, int a, int b, int c)
 {
-
     if (a+b+c == n)
     {
         if (a<=b && b<=c && a+b>c && chk[a][b][c]==0)
