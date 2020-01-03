@@ -1,4 +1,4 @@
-//o-mok
+//o-mo``
 #include <stdio.h>
 
 int a[19+2][19+2];
