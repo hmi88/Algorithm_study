@@ -48,36 +48,39 @@ int main(int argc, char** argv)
        단, 채점을 위해 코드를 제출하실 때에는 반드시 freopen 함수를 지우거나 주석 처리 하셔야 합니다.
     */
     //freopen("input.txt", "r", stdin);
+
     /*
        여러 개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
     */
     for(test_case = 1; test_case <= T; ++test_case)
     {
+        int dump, height;
+        int cnt[101] = {0, };
+        int ans = 0, start=0, end=100;
+
         /////////////////////////////////////////////////////////////////////////////////////////////
-        int n;
-        int M[1000] = {0,};
-        int ans = 0;
+        cin >> dump;
 
-        cin >> n;
-        for (int i=0; i<n; i++)
-            cin >> M[i];
-
-        for (int i=2; i<n-2; i++)
+        for(int i=1; i<=100; i++)
         {
-            int min = 255;
-            for (int j=-2; j<=2; j++)
-            {
-                if (j != 0 && M[i] - M[i+j] < min)
-                    min = M[i] - M[i+j];
-            }
-            if (min >= 0)
-                ans += min;
+            cin >> height;
+            cnt[height]++;
         }
+
+        while(end-start >= 1)
+        {
+            if (end-start == 0 && dump == 0)
+                break;
+            else
+            {
+                start++;
+                end--;
+            }
+        }
+
 
         cout << "#" << test_case << " " << ans << endl;
         /////////////////////////////////////////////////////////////////////////////////////////////
-
-
     }
     return 0;//정상종료시 반드시 0을 리턴해야합니다.
 }
