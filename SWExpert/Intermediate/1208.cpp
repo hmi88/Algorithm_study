@@ -34,10 +34,11 @@
 
 using namespace std;
 
+
 int main(int argc, char** argv)
 {
     int test_case;
-    int T=10;
+    int T=1;
     /*
        아래의 freopen 함수는 input.txt 를 read only 형식으로 연 후,
        앞으로 표준 입력(키보드) 대신 input.txt 파일로부터 읽어오겠다는 의미의 코드입니다.
@@ -54,9 +55,9 @@ int main(int argc, char** argv)
     */
     for(test_case = 1; test_case <= T; ++test_case)
     {
-        int dump, height;
+        int dump, height, min;
         int cnt[101] = {0, };
-        int ans = 0, start=0, end=100;
+        int ans=100, start=1, end=100;
 
         /////////////////////////////////////////////////////////////////////////////////////////////
         cin >> dump;
@@ -67,19 +68,22 @@ int main(int argc, char** argv)
             cnt[height]++;
         }
 
-        while(end-start >= 1)
+        while(dump>=0 && end-start!=0)
         {
-            if (end-start == 0 && dump == 0)
-                break;
+            if (cnt[end] >= cnt[start])
+                min = cnt[start];
             else
-            {
-                start++;
-                end--;
-            }
+                min = cnt[end];
+
+            cnt[start] = cnt[start] - min;
+            cnt[end] = cnt[end] - min;
+            cnt[start+1] = cnt[start+1] + min;
+            cnt[end+1] = cnt[end+1] + min;
+
+
         }
 
-
-        cout << "#" << test_case << " " << ans << endl;
+        cout << "#" << test_case << " " << ans << " " << dump << endl;
         /////////////////////////////////////////////////////////////////////////////////////////////
     }
     return 0;//정상종료시 반드시 0을 리턴해야합니다.
