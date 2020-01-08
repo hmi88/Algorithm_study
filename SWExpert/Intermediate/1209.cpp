@@ -37,7 +37,7 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-    int test_case;
+    int test;
     int T=10;
     /*
        아래의 freopen 함수는 input.txt 를 read only 형식으로 연 후,
@@ -53,27 +53,31 @@ int main(int argc, char** argv)
     /*
        여러 개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
     */
-    for(test_case = 1; test_case <= T; ++test_case)
+    for(int test_case = 1; test_case <= T; ++test_case)
     {
-        int dump;
-        int cnt[101] = {0, };
+        int row=100, col=100;
+        int A[100][100] = {0, };
+        int Sum[100+100+2] = {0, };
 
         /////////////////////////////////////////////////////////////////////////////////////////////
-        cin >> dump;
+        cin >> test;
 
-        for(int i=0; i<100; i++)
-        {
-            cin >> cnt[i];
-        }
+        for(int i=0; i<row; i++)
+            for(int j=0; j<col; j++)
+            {
+                cin >> A[i][j];
 
-        sort(cnt, cnt + 100);
-        for (int i = 0; i < dump; i++) {
-            cnt[0]++;
-            cnt[99]--;
-            sort(cnt, cnt + 100);
-        }
+                Sum[i] += A[i][j];
+                Sum[row+j] += A[i][j];
+                if (i==j)
+                    Sum[row+col] += A[i][j];
+                if ((i+j)==(row-1))
+                    Sum[row+col+1] += A[i][j];
+            }
 
-        cout << "#" << test_case << " " << cnt[99]-cnt[0] << endl;
+        // sort sum
+        sort(Sum, Sum + row+col+2);
+        cout << "#" << test << " " << Sum[row+col+1] << endl;
         /////////////////////////////////////////////////////////////////////////////////////////////
     }
     return 0;//정상종료시 반드시 0을 리턴해야합니다.
