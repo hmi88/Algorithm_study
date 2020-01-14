@@ -1,0 +1,12 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/chokiheum/GoogleDrive/hmiAGI/Research/Algorithm/SWExpert/Intermediate/1208.cpp
+iostream
+-
+
